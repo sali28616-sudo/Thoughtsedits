@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const portfolio = [
   { title: "Top Premium Campaign", category: "Premium Edit", id: "1rWQrPCYfH4nUAzBgqAJ7cX4bJTNM0Xgb" },
   { title: "Latest Premium Story", category: "Premium Edit", id: "1HtAUNnkHoUWmJmstpgmMPpl5PbhlvWYp" },
@@ -57,9 +59,12 @@ export default function Home() {
       <header className="site-header">
         <a className="brand" href="#top" aria-label="Thoughts home">Thoughts<span>.</span></a>
         <nav aria-label="Main navigation">
-          <a href="#work">Work</a><a href="#certificates">Certificates</a><a href="#services">Services</a><a href="#team">Team</a><a href="#pricing">Pricing</a><a href="#contact">Contact</a>
+          <a href="#work">Work</a><Link href="/reels">Reels</Link><a href="#certificates">Certificates</a><a href="#services">Services</a><a href="#team">Team</a><a href="#pricing">Pricing</a><a href="#contact">Contact</a>
         </nav>
-        <a className="header-cta" href={whatsapp} target="_blank" rel="noreferrer">WhatsApp <span>0308 6969047</span></a>
+        <div className="header-actions">
+          <Link className="reels-nav-cta" href="/reels"><span aria-hidden="true">▶</span> Reels</Link>
+          <a className="header-cta" href={whatsapp} target="_blank" rel="noreferrer">WhatsApp <span>0308 6969047</span></a>
+        </div>
       </header>
 
       <section className="hero section" id="top">
@@ -69,6 +74,7 @@ export default function Home() {
           <p className="lead">Cinematic video editing, motion graphics and stories designed to make people pause, watch and remember.</p>
           <div className="actions">
             <a className="button hero-primary" href="#work"><span>▶</span> Explore the work</a>
+            <Link className="button hero-reels" href="/reels">Browse Reels ↗</Link>
             <a className="hero-link" href={whatsapp} target="_blank" rel="noreferrer">Start a project ↗</a>
           </div>
           <div className="hero-proof"><div><strong>1M+</strong><span>Social views</span></div><div><strong>3+</strong><span>Years creating</span></div><div><strong>3</strong><span>Editors in team</span></div></div>
@@ -166,7 +172,10 @@ export default function Home() {
             </article>
           ))}
         </div>
-        <a className="button outline" href="https://drive.google.com/drive/folders/1WAj9hLkyR-BXEmiNJF8SelvfgScrgxlk" target="_blank" rel="noreferrer">Explore Full Portfolio ↗</a>
+        <div className="work-actions">
+          <Link className="button primary" href="/reels">Explore All Reels ↗</Link>
+          <a className="button outline" href="https://drive.google.com/drive/folders/1WAj9hLkyR-BXEmiNJF8SelvfgScrgxlk" target="_blank" rel="noreferrer">Open Drive Portfolio ↗</a>
+        </div>
       </section>
 
       <section className="about section" id="about">
@@ -188,7 +197,7 @@ export default function Home() {
         <span className="crystal-edge" aria-hidden="true" />
       </section>
 
-      <footer><a className="brand" href="#top">Thoughts<span>.</span></a><p>Video editing by Salman · 3 years of experience</p><div><a href={whatsapp} target="_blank" rel="noreferrer">WhatsApp</a><a href="mailto:ext.salman786@gmail.com">Email</a></div></footer>
+      <footer><a className="brand" href="#top">Thoughts<span>.</span></a><p>Video editing by Salman · 3 years of experience</p><div><Link href="/reels">Reels</Link><a href={whatsapp} target="_blank" rel="noreferrer">WhatsApp</a><a href="mailto:ext.salman786@gmail.com">Email</a></div></footer>
       <a className="mobile-whatsapp" href={whatsapp} target="_blank" rel="noreferrer" aria-label="Start a project with Salman on WhatsApp"><span>●</span> WhatsApp Salman</a>
     </main>
   );
