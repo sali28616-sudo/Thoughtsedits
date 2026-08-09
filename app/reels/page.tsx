@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import TransitionLink from "../TransitionLink";
 import ReelsExplorer from "./ReelsExplorer";
 
 export const metadata: Metadata = {
@@ -20,14 +20,17 @@ export default function ReelsPage() {
       </div>
 
       <header className="site-header reels-header">
-        <Link className="brand" href="/" aria-label="Thoughts home">Thoughts<span>.</span></Link>
+        <TransitionLink className="brand" href="/" aria-label="Thoughts home">Thoughts<span>.</span></TransitionLink>
         <nav aria-label="Reels page navigation">
-          <Link href="/">Home</Link>
-          <a className="active-nav" href="#reels">Reels</a>
+          <TransitionLink href="/">Home</TransitionLink>
+          <TransitionLink className="active-nav" href="/reels" aria-current="page">Reels</TransitionLink>
+          <TransitionLink href="/learn-editing">Learn Editing</TransitionLink>
+          <TransitionLink href="/about">About Us</TransitionLink>
           <a href="#start-project">Contact</a>
         </nav>
         <div className="header-actions">
-          <Link className="reels-nav-cta reels-home-cta" href="/">← Home</Link>
+          <TransitionLink className="learn-nav-cta" href="/learn-editing">Learn</TransitionLink>
+          <TransitionLink className="reels-nav-cta reels-home-cta" href="/">← Home</TransitionLink>
           <a className="header-cta" href={whatsapp} target="_blank" rel="noreferrer">Start a project</a>
         </div>
       </header>
@@ -68,9 +71,9 @@ export default function ReelsPage() {
       </section>
 
       <footer className="reels-footer">
-        <Link className="brand" href="/">Thoughts<span>.</span></Link>
+        <TransitionLink className="brand" href="/">Thoughts<span>.</span></TransitionLink>
         <p>Video editing by Salman · 3 years of experience</p>
-        <div><Link href="/">Home</Link><a href={whatsapp} target="_blank" rel="noreferrer">WhatsApp</a></div>
+        <div><TransitionLink href="/">Home</TransitionLink><TransitionLink href="/learn-editing">Learn Editing</TransitionLink><TransitionLink href="/about">About Us</TransitionLink><a href={whatsapp} target="_blank" rel="noreferrer">WhatsApp</a></div>
       </footer>
       <a className="mobile-whatsapp" href={whatsapp} target="_blank" rel="noreferrer" aria-label="Start a project with Salman on WhatsApp"><span>●</span> WhatsApp Salman</a>
     </main>

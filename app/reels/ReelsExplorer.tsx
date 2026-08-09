@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
+import VideoPreview from "../VideoPreview";
 
 const reels = [
   {
@@ -51,10 +52,7 @@ const filters = ["All", "Educational", "Promotional", "Storytelling", "Motion Gr
 
 export default function ReelsExplorer() {
   const [activeFilter, setActiveFilter] = useState<(typeof filters)[number]>("All");
-  const visibleReels = useMemo(
-    () => reels.filter((reel) => activeFilter === "All" || reel.category === activeFilter),
-    [activeFilter],
-  );
+  const visibleReels = reels.filter((reel) => activeFilter === "All" || reel.category === activeFilter);
 
   return (
     <>
@@ -80,13 +78,7 @@ export default function ReelsExplorer() {
         {visibleReels.map((reel, index) => (
           <article className="reel-card" key={reel.id}>
             <div className="reel-video">
-              <iframe
-                src={`https://drive.google.com/file/d/${reel.id}/preview`}
-                title={`${reel.title} — ${reel.client}`}
-                loading="lazy"
-                allow="autoplay; fullscreen"
-                allowFullScreen
-              />
+              <VideoPreview id={reel.id} title={`${reel.title} — ${reel.client}`} category={reel.category} orientation="portrait" />
               <div className="reel-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</div>
             </div>
             <div className="reel-details">

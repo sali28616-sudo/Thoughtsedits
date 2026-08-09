@@ -19,10 +19,25 @@ if [[ ! -x "${vinext}" ]]; then
 fi
 
 echo "Running bounded vinext build..."
+output_dir="${SITES_PROJECT_ROOT}/dist"
+case "${output_dir}" in
+  */dist) rm -rf -- "${output_dir}" ;;
+  *) echo "Refusing to clean unexpected build output: ${output_dir}" >&2; exit 69 ;;
+esac
 timeout \
   --signal=TERM \
   --kill-after="${SITES_BUILD_KILL_AFTER:-10s}" \
   "${SITES_BUILD_TIMEOUT:-3m}" \
   "${vinext}" build
+
+# Vinext currently copies its default font cache even when next/font is unused.
+# Remove it only when no generated asset references the directory.
+font_cache="${output_dir}/client/assets/_vinext_fonts"
+if [[ -d "${font_cache}" ]] && ! grep -Rqs "_vinext_fonts/" "${output_dir}" --exclude='*.woff2'; then
+  case "${font_cache}" in
+    */dist/client/assets/_vinext_fonts) rm -rf -- "${font_cache}" ;;
+    *) echo "Refusing to clean unexpected font cache: ${font_cache}" >&2; exit 69 ;;
+  esac
+fi
 
 bash "${script_dir}/validate-artifact.sh"

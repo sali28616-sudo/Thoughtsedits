@@ -1,16 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import MobileBottomNav from "./MobileBottomNav";
+import MotionController from "./MotionController";
+import PageTransitionProvider from "./PageTransitionProvider";
 
 export const metadata: Metadata = {
   title: "Thoughts — Video Editing by Salman",
@@ -32,10 +24,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <head>
+        <link rel="preconnect" href="https://drive.google.com" />
+        <link rel="preconnect" href="https://lh3.googleusercontent.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="//drive.google.com" />
+      </head>
+      <body className="antialiased">
+        <PageTransitionProvider>
+          <MotionController />
+          {children}
+          <MobileBottomNav />
+        </PageTransitionProvider>
       </body>
     </html>
   );

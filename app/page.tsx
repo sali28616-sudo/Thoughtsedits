@@ -1,4 +1,7 @@
-import Link from "next/link";
+import AboutSection from "./AboutSection";
+import TeamSection from "./TeamSection";
+import TransitionLink from "./TransitionLink";
+import VideoPreview from "./VideoPreview";
 
 const portfolio = [
   { title: "Top Premium Campaign", category: "Premium Edit", id: "1rWQrPCYfH4nUAzBgqAJ7cX4bJTNM0Xgb" },
@@ -15,12 +18,6 @@ const services = [
   { icon: "✂", name: "Basic Edit", description: "Clean, focused edits with precise cuts, text overlays, music and essential color correction.", meta: "1–2 days · Up to 2 min · 1 revision" },
 ];
 
-const team = [
-  { name: "Salman", role: "Founder & Lead Video Editor", image: "1Oz-z1VJZhbZxLiBOT2GEbNOUh2wYtSjL" },
-  { name: "Anas Ali", role: "Video Editor", image: "1OrpkC9Aedh_rvIXfTwlDybK5tpbY8ybM" },
-  { name: "Shaher Yar Khan", role: "Video Editor", image: "1iyKH4UthTuGisgd-sCEECSxtfx-jSMWH" },
-];
-
 const pricing = [
   { name: "Basic", price: "30K", featured: false, features: ["Up to 8 short videos", "Maximum 60 seconds each", "Basic cuts & transitions", "Background music", "Simple captions", "1 revision per video", "3–4 days delivery"] },
   { name: "Standard", price: "50K", featured: true, features: ["Up to 15 short videos", "Up to 4 long videos", "No monthly fees", "Professional transitions", "Colour grading", "Animated captions", "Sound effects & music", "Basic motion graphics", "3 revisions per video", "48–72 hours delivery"] },
@@ -31,13 +28,15 @@ const certificates = [
   {
     title: "Certificate of Appreciation",
     organization: "Pardesi Vibe · July 2026",
-    image: "/certificates/pardesi-vibe-appreciation.png",
+    image: "/certificates/pardesi-vibe-appreciation-v1-1400.webp",
+    imageSet: "/certificates/pardesi-vibe-appreciation-v1-700.webp 700w, /certificates/pardesi-vibe-appreciation-v1-1400.webp 1400w",
     alt: "Certificate of Appreciation presented to Salman Ali for video editing",
   },
   {
     title: "Certificate of Employment",
     organization: "PVG (Pardesi Vibe Germany) · July 2026",
-    image: "/certificates/pvg-employment.png",
+    image: "/certificates/pvg-employment-v1-1400.webp",
+    imageSet: "/certificates/pvg-employment-v1-700.webp 700w, /certificates/pvg-employment-v1-1400.webp 1400w",
     alt: "Certificate of Employment presented to Salman Ali as a video editor",
   },
 ];
@@ -57,38 +56,50 @@ export default function Home() {
 
       <div className="hero-shell">
       <header className="site-header">
-        <a className="brand" href="#top" aria-label="Thoughts home">Thoughts<span>.</span></a>
+        <TransitionLink className="brand" href="/" aria-label="Thoughts home">Thoughts<span>.</span></TransitionLink>
         <nav aria-label="Main navigation">
-          <a href="#work">Work</a><Link href="/reels">Reels</Link><a href="#certificates">Certificates</a><a href="#services">Services</a><a href="#team">Team</a><a href="#pricing">Pricing</a><a href="#contact">Contact</a>
+          <a href="#work">Work</a><TransitionLink href="/reels">Reels</TransitionLink><TransitionLink href="/learn-editing">Learn Editing</TransitionLink><a href="#certificates">Certificates</a><a href="#services">Services</a><TransitionLink href="/about">About Us</TransitionLink><a href="#pricing">Pricing</a><a href="#contact">Contact</a>
         </nav>
         <div className="header-actions">
-          <Link className="reels-nav-cta" href="/reels"><span aria-hidden="true">▶</span> Reels</Link>
+          <TransitionLink className="learn-nav-cta" href="/learn-editing">Learn</TransitionLink>
+          <TransitionLink className="reels-nav-cta" href="/reels"><span aria-hidden="true">▶</span> Reels</TransitionLink>
           <a className="header-cta" href={whatsapp} target="_blank" rel="noreferrer">WhatsApp <span>0308 6969047</span></a>
         </div>
       </header>
 
       <section className="hero section" id="top">
+        <div className="hero-full-portrait" aria-hidden="true"><img src="/salman-portfolio-hero.png" width="2048" height="1152" loading="eager" decoding="async" fetchPriority="high" alt="" /></div>
         <div className="hero-copy">
           <p className="hero-kicker"><span>●</span> Thoughts creative studio</p>
           <h1><span className="hero-solid">We edit</span><br /><span className="hero-outline">attention.</span></h1>
           <p className="lead">Cinematic video editing, motion graphics and stories designed to make people pause, watch and remember.</p>
           <div className="actions">
             <a className="button hero-primary" href="#work"><span>▶</span> Explore the work</a>
-            <Link className="button hero-reels" href="/reels">Browse Reels ↗</Link>
+            <TransitionLink className="button hero-reels" href="/reels">Browse Reels ↗</TransitionLink>
             <a className="hero-link" href={whatsapp} target="_blank" rel="noreferrer">Start a project ↗</a>
           </div>
-          <div className="hero-proof"><div><strong>1M+</strong><span>Social views</span></div><div><strong>3+</strong><span>Years creating</span></div><div><strong>3</strong><span>Editors in team</span></div></div>
+          <div className="hero-proof"><div><strong>1M+</strong><span>Social views</span></div><div><strong>3+</strong><span>Years creating</span></div><div><strong>3</strong><span>Editors in team</span></div><div><strong>24–48h</strong><span>Priority delivery</span></div></div>
         </div>
-        <div className="hero-art-stage">
-          <div className="hero-art-shadow" aria-hidden="true" />
-          <div className="hero-art-card"><img src="/salman-portfolio-hero.png" alt="Salman — Thoughts creative video editing portfolio" /><span className="crystal-edge" aria-hidden="true" /></div>
+        <div className="hero-art-stage hero-editor-stage">
           <div className="motion-chip chip-top" aria-hidden="true"><span>01</span><strong>MOTION</strong><i /></div>
           <div className="motion-chip chip-side" aria-hidden="true"><span>02</span><strong>STORY</strong><i /></div>
           <div className="motion-chip chip-bottom" aria-hidden="true"><span>03</span><strong>COLOUR</strong><i /></div>
+          <div className="hero-phone-stack" aria-label="Featured vertical reels">
+            {portfolio.slice(0, 3).map((item, index) => (
+              <TransitionLink className={`hero-phone hero-phone-${index + 1}`} href="/reels" aria-label={`Explore ${item.title} on the Reels page`} key={item.id}>
+                <span>0{index + 1}</span>
+                <img src={`https://drive.google.com/thumbnail?id=${item.id}&sz=w400`} width="400" height="711" alt="" loading={index === 1 ? "eager" : "lazy"} decoding="async" fetchPriority="low" />
+                <div><strong>{index === 0 ? "1M+" : item.category}</strong><small>{item.title}</small></div>
+              </TransitionLink>
+            ))}
+          </div>
           <div className="hero-timeline" aria-hidden="true"><b>00:12:24</b><span /><span /><span /><span /><i /></div>
           <div className="hero-loop" aria-hidden="true"><span /><span /><span /></div>
         </div>
       </section>
+      <div className="hero-trust-strip" aria-label="Selected client and portfolio credentials">
+        <span>Trusted creative work for</span><strong>Pardesi Vibe</strong><i>✦</i><strong>PVG Germany</strong><i>✦</i><strong>Million-view social content</strong><i>✦</i><strong>Verified experience</strong>
+      </div>
       <div className="hero-marquee" aria-hidden="true"><div>VIDEO EDITING <span>✦</span> MOTION GRAPHICS <span>✦</span> COLOUR GRADING <span>✦</span> STORYTELLING <span>✦</span> VIDEO EDITING <span>✦</span> MOTION GRAPHICS <span>✦</span></div></div>
       </div>
 
@@ -98,7 +109,7 @@ export default function Home() {
           {certificates.map((certificate, index) => (
             <article className="certificate-card" key={certificate.title}>
               <div className="certificate-index"><span>0{index + 1}</span><i aria-hidden="true" /></div>
-              <div className="certificate-image"><img src={certificate.image} alt={certificate.alt} loading="eager" /></div>
+              <div className="certificate-image"><img src={certificate.image} srcSet={certificate.imageSet} sizes="(max-width: 640px) calc(100vw - 54px), (max-width: 1024px) 720px, 650px" width="1400" height="990" alt={certificate.alt} loading="lazy" decoding="async" fetchPriority="low" /></div>
               <div className="certificate-info"><div><p>{certificate.organization}</p><h3>{certificate.title}</h3></div><span>Verified</span></div>
               <span className="crystal-edge" aria-hidden="true" />
             </article>
@@ -112,7 +123,7 @@ export default function Home() {
         <div className="showreel-stage">
           <div className="floating-frame frame-back-one" aria-hidden="true"><span>COLOR</span><b>01</b></div>
           <div className="floating-frame frame-back-two" aria-hidden="true"><span>MOTION</span><b>02</b></div>
-          <div className="showreel-card"><iframe src="https://drive.google.com/file/d/1rWQrPCYfH4nUAzBgqAJ7cX4bJTNM0Xgb/preview" title="Thoughts featured premium showreel" allow="autoplay; fullscreen" allowFullScreen /><div className="showreel-label"><span>Featured work</span><strong>Million+ social views</strong></div><span className="crystal-edge" aria-hidden="true" /></div>
+          <div className="showreel-card"><VideoPreview id="1rWQrPCYfH4nUAzBgqAJ7cX4bJTNM0Xgb" title="Thoughts featured premium showreel" category="Featured work" /><div className="showreel-label"><span>Featured work</span><strong>Million+ social views</strong></div><span className="crystal-edge" aria-hidden="true" /></div>
           <div className="timeline-float" aria-hidden="true"><span /><span /><span /><span /><i /></div>
         </div>
       </section>
@@ -130,19 +141,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="team section" id="team">
-        <div className="section-heading"><div><p className="eyebrow">Meet the team</p><h2>Three editors.<br />One creative standard.</h2></div><p>Thoughts brings together a focused editing team built for reliable delivery, consistent quality and content that earns attention.</p></div>
-        <p className="mobile-swipe-hint"><span aria-hidden="true">↔</span> Swipe to meet the team</p>
-        <div className="team-grid mobile-slider" role="region" aria-label="Swipe through team members" tabIndex={0}>
-          {team.map((member, index) => (
-            <article className="team-card" key={member.name}>
-              <div className="team-photo"><img src={`https://drive.google.com/thumbnail?id=${member.image}&sz=w1400`} alt={`${member.name}, ${member.role} at Thoughts`} /></div>
-              <div className="team-info"><div><span>0{index + 1}</span><h3>{member.name}</h3><p>{member.role}</p></div><i aria-hidden="true">↗</i></div>
-              <span className="crystal-edge" aria-hidden="true" />
-            </article>
-          ))}
-        </div>
-      </section>
+      <TeamSection />
 
       <section className="pricing section" id="pricing">
         <div className="pricing-heading"><p className="eyebrow">Monthly packages</p><h2>Choose the editing pace<br />your content needs.</h2><p>Clear monthly options taken directly from the Thoughts portfolio. Contact us to confirm scope and availability.</p></div>
@@ -166,25 +165,20 @@ export default function Home() {
         <div className="work-grid mobile-slider" role="region" aria-label="Swipe through million-view portfolio videos" tabIndex={0}>
           {portfolio.map((item, index) => (
             <article className={`work-card ${index === 0 ? "featured" : ""}`} key={item.id}>
-              <div className="video-wrap"><iframe src={`https://drive.google.com/file/d/${item.id}/preview`} title={item.title} loading="lazy" allow="autoplay; fullscreen" allowFullScreen /></div>
+              <div className="video-wrap"><VideoPreview id={item.id} title={item.title} category={item.category} /></div>
               <div className="work-info"><div><span>{item.category}</span><h3>{item.title}</h3><p>1M+ views on social media</p></div><a href={`https://drive.google.com/file/d/${item.id}/view`} target="_blank" rel="noreferrer" aria-label={`Open ${item.title}`}>↗</a></div>
               <span className="crystal-edge" aria-hidden="true" />
             </article>
           ))}
         </div>
         <div className="work-actions">
-          <Link className="button primary" href="/reels">Explore All Reels ↗</Link>
+          <TransitionLink className="button primary" href="/reels">Explore All Reels ↗</TransitionLink>
+          <TransitionLink className="button learn-home-cta" href="/learn-editing">Learn Video Editing →</TransitionLink>
           <a className="button outline" href="https://drive.google.com/drive/folders/1WAj9hLkyR-BXEmiNJF8SelvfgScrgxlk" target="_blank" rel="noreferrer">Open Drive Portfolio ↗</a>
         </div>
       </section>
 
-      <section className="about section" id="about">
-        <div className="portrait"><img src="https://drive.google.com/thumbnail?id=1Oz-z1VJZhbZxLiBOT2GEbNOUh2wYtSjL&sz=w1200" alt="Salman, video editor at Thoughts" /><span className="crystal-edge" aria-hidden="true" /></div>
-        <div className="about-copy"><p className="eyebrow">About Thoughts</p><h2>Editing with intent,<br />not just effects.</h2><p>I’m Salman, a video editor with three years of professional experience. I help creators, consultants and businesses turn ideas and raw footage into polished videos that feel clear, current and memorable.</p>
-          <div className="stats"><div><strong>3+</strong><span>Years of experience</span></div><div><strong>3</strong><span>Editors in the team</span></div><div><strong>1M+</strong><span>Social media views</span></div></div>
-          <div className="proof-links"><a href="#certificates">View certificates ↓</a><a href="https://drive.google.com/drive/folders/1cE0hSxOoECfe1jn7WBMeyVidv0DDhhOi" target="_blank" rel="noreferrer">Proof of work ↗</a></div>
-        </div>
-      </section>
+      <AboutSection />
 
       <section className="testimonial section">
         <p className="eyebrow">Client feedback</p><blockquote>“The final edit did more than look good—it made the message easier to follow and the content much more engaging.”</blockquote><a className="text-link" href="https://drive.google.com/file/d/1uG_Ok4kAIzCP8Pr0fWIHWf3it56So8JD/view" target="_blank" rel="noreferrer">Watch client feedback ↗</a>
@@ -197,7 +191,7 @@ export default function Home() {
         <span className="crystal-edge" aria-hidden="true" />
       </section>
 
-      <footer><a className="brand" href="#top">Thoughts<span>.</span></a><p>Video editing by Salman · 3 years of experience</p><div><Link href="/reels">Reels</Link><a href={whatsapp} target="_blank" rel="noreferrer">WhatsApp</a><a href="mailto:ext.salman786@gmail.com">Email</a></div></footer>
+      <footer><TransitionLink className="brand" href="/">Thoughts<span>.</span></TransitionLink><p>Video editing by Salman · 3 years of experience</p><div><TransitionLink href="/reels">Reels</TransitionLink><TransitionLink href="/learn-editing">Learn Editing</TransitionLink><TransitionLink href="/about">About Us</TransitionLink><a href={whatsapp} target="_blank" rel="noreferrer">WhatsApp</a><a href="mailto:ext.salman786@gmail.com">Email</a></div></footer>
       <a className="mobile-whatsapp" href={whatsapp} target="_blank" rel="noreferrer" aria-label="Start a project with Salman on WhatsApp"><span>●</span> WhatsApp Salman</a>
     </main>
   );
