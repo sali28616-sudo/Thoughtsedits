@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import AboutSection from "./AboutSection";
 import TeamSection from "./TeamSection";
 import TransitionLink from "./TransitionLink";
@@ -44,9 +45,49 @@ const certificates = [
 
 const whatsapp = "https://wa.me/923086969047";
 
+export const metadata: Metadata = {
+  title: "Thoughts — Professional Video Editing Services",
+  description: "Professional video editing for creators and businesses, including Reels, YouTube videos, social media content, motion graphics and storytelling.",
+  alternates: { canonical: "https://thoughtsedits.com/" },
+};
+
+const homeStructuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://thoughtsedits.com/#organization",
+      name: "Thoughts",
+      url: "https://thoughtsedits.com/",
+      logo: "https://thoughtsedits.com/favicon.svg",
+      description: "Professional video editing and creative video editing studio for creators and businesses.",
+      founder: { "@id": "https://thoughtsedits.com/#salman-ali" },
+      email: "ext.salman786@gmail.com",
+      contactPoint: { "@type": "ContactPoint", telephone: "+923086969047", contactType: "customer service", availableLanguage: ["English", "Urdu"] },
+    },
+    {
+      "@type": "Person",
+      "@id": "https://thoughtsedits.com/#salman-ali",
+      name: "Salman Ali",
+      jobTitle: "Founder and Lead Video Editor",
+      worksFor: { "@id": "https://thoughtsedits.com/#organization" },
+      url: "https://thoughtsedits.com/about",
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://thoughtsedits.com/#website",
+      name: "Thoughts",
+      url: "https://thoughtsedits.com/",
+      publisher: { "@id": "https://thoughtsedits.com/#organization" },
+      inLanguage: "en",
+    },
+  ],
+};
+
 export default function Home() {
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeStructuredData) }} />
       <div className="ambient-3d" aria-hidden="true">
         <span className="ambient-orb ambient-orb-a" /><span className="ambient-orb ambient-orb-b" />
         <span className="wire-cube cube-a"><i /><i /><i /><i /></span>
@@ -59,7 +100,7 @@ export default function Home() {
       <header className="site-header">
         <TransitionLink className="brand" href="/" aria-label="Thoughts home">Thoughts<span>.</span></TransitionLink>
         <nav aria-label="Main navigation">
-          <a href="#work">Work</a><TransitionLink href="/reels">Reels</TransitionLink><TransitionLink href="/learn-editing">Learn Editing</TransitionLink><a href="#certificates">Certificates</a><a href="#services">Services</a><TransitionLink href="/about">About Us</TransitionLink><a href="#pricing">Pricing</a><a href="#contact">Contact</a>
+          <a href="#work">Work</a><TransitionLink href="/reels">Reels</TransitionLink><TransitionLink href="/learn-editing">Learn Editing</TransitionLink><a href="#certificates">Certificates</a><a href="#services">Services</a><TransitionLink href="/about">About Us</TransitionLink><a href="#pricing">Pricing</a><TransitionLink href="/blog">Blog</TransitionLink><a href="#contact">Contact</a>
         </nav>
         <div className="header-actions">
           <TransitionLink className="learn-nav-cta" href="/learn-editing">Learn</TransitionLink>
@@ -79,7 +120,7 @@ export default function Home() {
             <TransitionLink className="button hero-reels" href="/reels">Browse Reels ↗</TransitionLink>
             <a className="hero-link" href={whatsapp} target="_blank" rel="noreferrer">Start a project ↗</a>
           </div>
-          <div className="hero-proof"><div><strong>1M+</strong><span>Social views</span></div><div><strong>3+</strong><span>Years of Professional Experience</span></div><div><strong>3</strong><span>Editors in team</span></div><div><strong>24–48h</strong><span>Priority delivery</span></div></div>
+          <div className="hero-proof"><div><strong>1M+</strong><span>Social views</span></div><div><strong>3+</strong><span>Years of Professional Experience</span></div><div><strong>4</strong><span>Editors in the Team</span></div><div><strong>24–48h</strong><span>Priority delivery</span></div></div>
         </div>
         <div className="hero-art-stage hero-editor-stage">
           <div className="motion-chip chip-top" aria-hidden="true"><span>01</span><strong>MOTION</strong><i /></div>
@@ -193,7 +234,7 @@ export default function Home() {
         <span className="crystal-edge" aria-hidden="true" />
       </section>
 
-      <footer><TransitionLink className="brand" href="/">Thoughts<span>.</span></TransitionLink><p>Video editing by Salman · 3+ Years of Professional Experience</p><div><TransitionLink href="/reels">Reels</TransitionLink><TransitionLink href="/learn-editing">Learn Editing</TransitionLink><TransitionLink href="/about">About Us</TransitionLink><a href={whatsapp} target="_blank" rel="noreferrer">WhatsApp</a><a href="mailto:ext.salman786@gmail.com">Email</a></div></footer>
+      <footer><TransitionLink className="brand" href="/">Thoughts<span>.</span></TransitionLink><p>Video editing by Salman · 3+ Years of Professional Experience</p><div><TransitionLink href="/reels">Reels</TransitionLink><TransitionLink href="/learn-editing">Learn Editing</TransitionLink><TransitionLink href="/about">About Us</TransitionLink><TransitionLink href="/blog">Blog</TransitionLink><a href={whatsapp} target="_blank" rel="noreferrer">WhatsApp</a><a href="mailto:ext.salman786@gmail.com">Email</a></div></footer>
       <MobileWhatsAppCTA href={whatsapp} />
     </main>
   );

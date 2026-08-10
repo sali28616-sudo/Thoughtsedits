@@ -4,8 +4,10 @@ import ReelsExplorer from "./ReelsExplorer";
 import MobileWhatsAppCTA from "../MobileWhatsAppCTA";
 
 export const metadata: Metadata = {
-  title: "Reels — Thoughts Video Editing",
-  description: "Explore vertical social media reels, promotional videos, educational edits and motion graphics created by Salman and the Thoughts editing team.",
+  title: "Reels & Social Media Video Editing Portfolio | Thoughts",
+  description: "Explore social-first video editing for Instagram Reels, YouTube Shorts and vertical content, with strong hooks, clear storytelling and motion graphics.",
+  alternates: { canonical: "https://thoughtsedits.com/reels" },
+  openGraph: { type: "website", url: "https://thoughtsedits.com/reels", title: "Reels & Social Media Video Editing Portfolio | Thoughts", description: "Social-first editing for Instagram Reels, YouTube Shorts and vertical content.", images: [{ url: "/salman-portfolio-hero.png", width: 2048, height: 1152, alt: "Thoughts Reels and social media video editing portfolio" }] },
 };
 
 const whatsapp = "https://wa.me/923086969047";
@@ -27,6 +29,7 @@ export default function ReelsPage() {
           <TransitionLink className="active-nav" href="/reels" aria-current="page">Reels</TransitionLink>
           <TransitionLink href="/learn-editing">Learn Editing</TransitionLink>
           <TransitionLink href="/about">About Us</TransitionLink>
+          <TransitionLink href="/blog">Blog</TransitionLink>
           <a href="#start-project">Contact</a>
         </nav>
         <div className="header-actions">
@@ -74,7 +77,7 @@ export default function ReelsPage() {
       <footer className="reels-footer">
         <TransitionLink className="brand" href="/">Thoughts<span>.</span></TransitionLink>
         <p>Video editing by Salman · 3+ Years of Professional Experience</p>
-        <div><TransitionLink href="/">Home</TransitionLink><TransitionLink href="/learn-editing">Learn Editing</TransitionLink><TransitionLink href="/about">About Us</TransitionLink><a href={whatsapp} target="_blank" rel="noreferrer">WhatsApp</a></div>
+        <div><TransitionLink href="/">Home</TransitionLink><TransitionLink href="/learn-editing">Learn Editing</TransitionLink><TransitionLink href="/about">About Us</TransitionLink><TransitionLink href="/blog">Blog</TransitionLink><a href={whatsapp} target="_blank" rel="noreferrer">WhatsApp</a></div>
       </footer>
       <MobileWhatsAppCTA href={whatsapp} />
     </main>

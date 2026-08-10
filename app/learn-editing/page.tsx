@@ -3,8 +3,10 @@ import TransitionLink from "../TransitionLink";
 import MobileWhatsAppCTA from "../MobileWhatsAppCTA";
 
 export const metadata: Metadata = {
-  title: "Learn Video Editing — Thoughts Creative Studio",
-  description: "Learn professional video editing, build a client-ready portfolio, and understand how to find and manage freelance video editing clients with Thoughts Creative Studio.",
+  title: "Learn Video Editing & Freelancing | Thoughts",
+  description: "Learn professional video editing for client work, build a portfolio, understand freelance workflows and learn how to approach and manage editing clients.",
+  alternates: { canonical: "https://thoughtsedits.com/learn-editing" },
+  openGraph: { type: "website", url: "https://thoughtsedits.com/learn-editing", title: "Learn Video Editing & Freelancing | Thoughts", description: "Professional video editing training for practical skills, portfolio building and freelance client work.", images: [{ url: "/salman-portfolio-hero.png", width: 2048, height: 1152, alt: "Learn professional video editing with Thoughts" }] },
 };
 
 const whatsapp = "https://wa.me/923086969047";
@@ -98,6 +100,7 @@ export default function LearnEditingPage() {
           <TransitionLink href="/reels">Reels</TransitionLink>
           <TransitionLink className="active-nav" href="/learn-editing" aria-current="page">Learn Editing</TransitionLink>
           <TransitionLink href="/about">About Us</TransitionLink>
+          <TransitionLink href="/blog">Blog</TransitionLink>
           <a href="#courses">Courses</a>
           <a href="#how-it-works">How It Works</a>
           <a href="#why-us">Why Us</a>
@@ -298,7 +301,7 @@ export default function LearnEditingPage() {
       <footer className="learn-footer">
         <TransitionLink className="brand" href="/">Thoughts<span>.</span></TransitionLink>
         <p>Professional video editing and freelance training by Salman</p>
-        <div><TransitionLink href="/">Home</TransitionLink><TransitionLink href="/reels">Reels</TransitionLink><TransitionLink href="/about">About Us</TransitionLink><a href={whatsapp} target="_blank" rel="noreferrer">WhatsApp</a></div>
+        <div><TransitionLink href="/">Home</TransitionLink><TransitionLink href="/reels">Reels</TransitionLink><TransitionLink href="/about">About Us</TransitionLink><TransitionLink href="/blog">Blog</TransitionLink><a href={whatsapp} target="_blank" rel="noreferrer">WhatsApp</a></div>
       </footer>
       <MobileWhatsAppCTA href={whatsapp} label="Ask About Training" ariaLabel="Ask about video editing training on WhatsApp" />
     </main>

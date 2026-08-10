@@ -5,8 +5,10 @@ import TransitionLink from "../TransitionLink";
 import MobileWhatsAppCTA from "../MobileWhatsAppCTA";
 
 export const metadata: Metadata = {
-  title: "About Us — Thoughts Creative Studio",
-  description: "Meet Salman and the Thoughts Creative Studio video editing team, and learn about their professional editing experience and creative approach.",
+  title: "About Thoughts — Video Editing Studio",
+  description: "Meet Salman and the four-editor Thoughts team, learn how the studio approaches professional video editing, and explore its real client-focused creative workflow.",
+  alternates: { canonical: "https://thoughtsedits.com/about" },
+  openGraph: { type: "website", url: "https://thoughtsedits.com/about", title: "About Thoughts — Video Editing Studio", description: "Meet Salman and the four-editor Thoughts team behind professional video editing for creators and businesses.", images: [{ url: "/salman-portfolio-hero.png", width: 2048, height: 1152, alt: "Salman Ali, founder and lead video editor at Thoughts" }] },
 };
 
 const whatsapp = "https://wa.me/923086969047";
@@ -28,6 +30,7 @@ export default function AboutPage() {
           <TransitionLink href="/reels">Reels</TransitionLink>
           <TransitionLink href="/learn-editing">Learn Editing</TransitionLink>
           <TransitionLink className="active-nav" href="/about" aria-current="page">About Us</TransitionLink>
+          <TransitionLink href="/blog">Blog</TransitionLink>
         </nav>
         <div className="header-actions">
           <TransitionLink className="learn-nav-cta" href="/learn-editing">Learn</TransitionLink>
@@ -36,13 +39,14 @@ export default function AboutPage() {
         </div>
       </header>
 
+      <h1 className="visually-hidden">About Thoughts — Video Editing Studio</h1>
       <TeamSection />
       <AboutSection certificateHref="/#certificates" />
 
       <footer className="reels-footer">
         <TransitionLink className="brand" href="/">Thoughts<span>.</span></TransitionLink>
         <p>Video editing by Salman · 3+ Years of Professional Experience</p>
-        <div><TransitionLink href="/">Home</TransitionLink><TransitionLink href="/reels">Reels</TransitionLink><TransitionLink href="/learn-editing">Learn Editing</TransitionLink><a href={whatsapp} target="_blank" rel="noreferrer">WhatsApp</a></div>
+        <div><TransitionLink href="/">Home</TransitionLink><TransitionLink href="/reels">Reels</TransitionLink><TransitionLink href="/learn-editing">Learn Editing</TransitionLink><TransitionLink href="/blog">Blog</TransitionLink><a href={whatsapp} target="_blank" rel="noreferrer">WhatsApp</a></div>
       </footer>
       <MobileWhatsAppCTA href={whatsapp} />
     </main>

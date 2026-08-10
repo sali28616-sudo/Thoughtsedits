@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://thoughtsedits.com/sitemap.xml
+Host: https://thoughtsedits.com
