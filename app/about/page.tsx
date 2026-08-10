@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import AboutSection from "../AboutSection";
 import TeamSection from "../TeamSection";
 import TransitionLink from "../TransitionLink";
+import MobileWhatsAppCTA from "../MobileWhatsAppCTA";
 
 export const metadata: Metadata = {
   title: "About Us — Thoughts Creative Studio",
@@ -40,10 +41,10 @@ export default function AboutPage() {
 
       <footer className="reels-footer">
         <TransitionLink className="brand" href="/">Thoughts<span>.</span></TransitionLink>
-        <p>Video editing by Salman · 3 years of experience</p>
+        <p>Video editing by Salman · 3+ Years of Professional Experience</p>
         <div><TransitionLink href="/">Home</TransitionLink><TransitionLink href="/reels">Reels</TransitionLink><TransitionLink href="/learn-editing">Learn Editing</TransitionLink><a href={whatsapp} target="_blank" rel="noreferrer">WhatsApp</a></div>
       </footer>
-      <a className="mobile-whatsapp" href={whatsapp} target="_blank" rel="noreferrer" aria-label="Start a project with Salman on WhatsApp"><span>●</span> WhatsApp Salman</a>
+      <MobileWhatsAppCTA href={whatsapp} />
     </main>
   );
 }

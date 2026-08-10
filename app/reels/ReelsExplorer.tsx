@@ -8,7 +8,7 @@ const reels = [
     title: "Top Premium Campaign",
     client: "Pardesi Vibe",
     category: "Promotional",
-    views: "1M+ social views",
+    views: "Part of 1M+ social views",
     id: "1rWQrPCYfH4nUAzBgqAJ7cX4bJTNM0Xgb",
   },
   {
@@ -22,7 +22,7 @@ const reels = [
     title: "Social Media Success Story",
     client: "PVG Germany",
     category: "Educational",
-    views: "1M+ social views",
+    views: "Part of 1M+ social views",
     id: "1xcX7hB16txJibAdVlu0hwT8foxisxgJJ",
   },
   {

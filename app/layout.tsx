@@ -7,7 +7,7 @@ import PageTransitionProvider from "./PageTransitionProvider";
 export const metadata: Metadata = {
   title: "Thoughts — Video Editing by Salman",
   description:
-    "Professional video editing portfolio by Salman. Cinematic, social media, real estate and marketing edits backed by three years of experience.",
+    "Professional video editing portfolio by Salman. Cinematic, social media, real estate and marketing edits backed by 3+ Years of Professional Experience.",
   other: {
     "codex-preview": "development",
   },

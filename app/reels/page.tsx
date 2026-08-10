@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import TransitionLink from "../TransitionLink";
 import ReelsExplorer from "./ReelsExplorer";
+import MobileWhatsAppCTA from "../MobileWhatsAppCTA";
 
 export const metadata: Metadata = {
   title: "Reels — Thoughts Video Editing",
@@ -48,7 +49,7 @@ export default function ReelsPage() {
         <div className="reels-hero-proof" aria-label="Portfolio highlights">
           <div><strong>1M+</strong><span>Social views</span></div>
           <div><strong>6</strong><span>Featured reels</span></div>
-          <div><strong>3+</strong><span>Years editing</span></div>
+          <div><strong>3+</strong><span>Years of Professional Experience</span></div>
         </div>
       </section>
 
@@ -72,10 +73,10 @@ export default function ReelsPage() {
 
       <footer className="reels-footer">
         <TransitionLink className="brand" href="/">Thoughts<span>.</span></TransitionLink>
-        <p>Video editing by Salman · 3 years of experience</p>
+        <p>Video editing by Salman · 3+ Years of Professional Experience</p>
         <div><TransitionLink href="/">Home</TransitionLink><TransitionLink href="/learn-editing">Learn Editing</TransitionLink><TransitionLink href="/about">About Us</TransitionLink><a href={whatsapp} target="_blank" rel="noreferrer">WhatsApp</a></div>
       </footer>
-      <a className="mobile-whatsapp" href={whatsapp} target="_blank" rel="noreferrer" aria-label="Start a project with Salman on WhatsApp"><span>●</span> WhatsApp Salman</a>
+      <MobileWhatsAppCTA href={whatsapp} />
     </main>
   );
 }

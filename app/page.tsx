@@ -2,6 +2,7 @@ import AboutSection from "./AboutSection";
 import TeamSection from "./TeamSection";
 import TransitionLink from "./TransitionLink";
 import VideoPreview from "./VideoPreview";
+import MobileWhatsAppCTA from "./MobileWhatsAppCTA";
 
 const portfolio = [
   { title: "Top Premium Campaign", category: "Premium Edit", id: "1rWQrPCYfH4nUAzBgqAJ7cX4bJTNM0Xgb" },
@@ -19,9 +20,9 @@ const services = [
 ];
 
 const pricing = [
-  { name: "Basic", price: "30K", featured: false, features: ["Up to 8 short videos", "Maximum 60 seconds each", "Basic cuts & transitions", "Background music", "Simple captions", "1 revision per video", "3–4 days delivery"] },
-  { name: "Standard", price: "50K", featured: true, features: ["Up to 15 short videos", "Up to 4 long videos", "No monthly fees", "Professional transitions", "Colour grading", "Animated captions", "Sound effects & music", "Basic motion graphics", "3 revisions per video", "48–72 hours delivery"] },
-  { name: "Premium", price: "70K", featured: false, features: ["Up to 25 short videos", "Up to 6 long videos", "Advanced video editing", "Professional colour grading", "Advanced motion graphics", "Premium captions & effects", "Thumbnail design included", "Unlimited revisions", "Priority 24–48 hours delivery"] },
+  { name: "Basic", pkr: "PKR 30K", usd: "$107 USD", featured: false, features: ["Up to 8 short videos", "Maximum 60 seconds each", "Basic cuts & transitions", "Background music", "Simple captions", "1 revision per video", "3–4 days delivery"] },
+  { name: "Standard", pkr: "PKR 50K", usd: "$178 USD", featured: true, features: ["Up to 15 short videos", "Up to 4 long videos", "Monthly subscription", "Professional transitions", "Colour grading", "Animated captions", "Sound effects & music", "Basic motion graphics", "3 revisions per video", "48–72 hours delivery"] },
+  { name: "Premium", pkr: "PKR 70K", usd: "$250 USD", featured: false, features: ["Up to 25 short videos", "Up to 6 long videos", "Advanced video editing", "Professional colour grading", "Advanced motion graphics", "Premium captions & effects", "Thumbnail design included", "Unlimited revisions", "Priority 24–48 hours delivery"] },
 ];
 
 const certificates = [
@@ -78,7 +79,7 @@ export default function Home() {
             <TransitionLink className="button hero-reels" href="/reels">Browse Reels ↗</TransitionLink>
             <a className="hero-link" href={whatsapp} target="_blank" rel="noreferrer">Start a project ↗</a>
           </div>
-          <div className="hero-proof"><div><strong>1M+</strong><span>Social views</span></div><div><strong>3+</strong><span>Years creating</span></div><div><strong>3</strong><span>Editors in team</span></div><div><strong>24–48h</strong><span>Priority delivery</span></div></div>
+          <div className="hero-proof"><div><strong>1M+</strong><span>Social views</span></div><div><strong>3+</strong><span>Years of Professional Experience</span></div><div><strong>3</strong><span>Editors in team</span></div><div><strong>24–48h</strong><span>Priority delivery</span></div></div>
         </div>
         <div className="hero-art-stage hero-editor-stage">
           <div className="motion-chip chip-top" aria-hidden="true"><span>01</span><strong>MOTION</strong><i /></div>
@@ -89,7 +90,7 @@ export default function Home() {
               <TransitionLink className={`hero-phone hero-phone-${index + 1}`} href="/reels" aria-label={`Explore ${item.title} on the Reels page`} key={item.id}>
                 <span>0{index + 1}</span>
                 <img src={`https://drive.google.com/thumbnail?id=${item.id}&sz=w400`} width="400" height="711" alt="" loading={index === 1 ? "eager" : "lazy"} decoding="async" fetchPriority="low" />
-                <div><strong>{index === 0 ? "1M+" : item.category}</strong><small>{item.title}</small></div>
+                <div><strong>{index === 0 ? "Part of 1M+" : item.category}</strong><small>{item.title}</small></div>
               </TransitionLink>
             ))}
           </div>
@@ -123,7 +124,7 @@ export default function Home() {
         <div className="showreel-stage">
           <div className="floating-frame frame-back-one" aria-hidden="true"><span>COLOR</span><b>01</b></div>
           <div className="floating-frame frame-back-two" aria-hidden="true"><span>MOTION</span><b>02</b></div>
-          <div className="showreel-card"><VideoPreview id="1rWQrPCYfH4nUAzBgqAJ7cX4bJTNM0Xgb" title="Thoughts featured premium showreel" category="Featured work" /><div className="showreel-label"><span>Featured work</span><strong>Million+ social views</strong></div><span className="crystal-edge" aria-hidden="true" /></div>
+          <div className="showreel-card"><VideoPreview id="1rWQrPCYfH4nUAzBgqAJ7cX4bJTNM0Xgb" title="Thoughts featured premium showreel" category="Featured work" /><div className="showreel-label"><span>Featured work</span><strong>Part of 1M+ social views</strong></div><span className="crystal-edge" aria-hidden="true" /></div>
           <div className="timeline-float" aria-hidden="true"><span /><span /><span /><span /><i /></div>
         </div>
       </section>
@@ -150,23 +151,24 @@ export default function Home() {
           {pricing.map((plan) => (
             <article className={`price-card ${plan.featured ? "price-featured" : ""}`} key={plan.name}>
               {plan.featured && <span className="popular">Most popular</span>}
-              <div className="price-top"><span>{plan.name}</span><strong>{plan.price}</strong><small>/ month</small></div>
+              <div className="price-top"><span>{plan.name}</span><strong>{plan.usd}</strong><small>{plan.pkr} / month</small></div>
               <ul>{plan.features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
               <a className={`button ${plan.featured ? "primary" : "outline-price"}`} href={whatsapp} target="_blank" rel="noreferrer">Choose {plan.name} ↗</a>
               <span className="crystal-edge" aria-hidden="true" />
             </article>
           ))}
         </div>
+        <p className="pricing-note">International pricing shown in USD. PKR equivalent provided for local clients. <span>USD equivalent is approximate and may vary with exchange rates.</span></p>
       </section>
 
       <section className="work section" id="work">
-        <div className="section-heading"><div><p className="eyebrow">Million-view portfolio</p><h2>Videos that crossed<br />a million views.</h2></div><p>Social-first edits built for strong hooks, clear storytelling and audience retention—now with more than one million views across social media.</p></div>
+        <div className="section-heading"><div><p className="eyebrow">1M+ social portfolio</p><h2>Work behind<br />million-view reach.</h2></div><p>Social-first edits built for strong hooks, clear storytelling and audience retention—part of a portfolio with more than one million views across social media.</p></div>
         <p className="mobile-swipe-hint"><span aria-hidden="true">↔</span> Swipe through featured videos</p>
         <div className="work-grid mobile-slider" role="region" aria-label="Swipe through million-view portfolio videos" tabIndex={0}>
           {portfolio.map((item, index) => (
             <article className={`work-card ${index === 0 ? "featured" : ""}`} key={item.id}>
               <div className="video-wrap"><VideoPreview id={item.id} title={item.title} category={item.category} /></div>
-              <div className="work-info"><div><span>{item.category}</span><h3>{item.title}</h3><p>1M+ views on social media</p></div><a href={`https://drive.google.com/file/d/${item.id}/view`} target="_blank" rel="noreferrer" aria-label={`Open ${item.title}`}>↗</a></div>
+              <div className="work-info"><div><span>{item.category}</span><h3>{item.title}</h3><p>Part of 1M+ social views</p></div><a href={`https://drive.google.com/file/d/${item.id}/view`} target="_blank" rel="noreferrer" aria-label={`Open ${item.title}`}>↗</a></div>
               <span className="crystal-edge" aria-hidden="true" />
             </article>
           ))}
@@ -191,8 +193,8 @@ export default function Home() {
         <span className="crystal-edge" aria-hidden="true" />
       </section>
 
-      <footer><TransitionLink className="brand" href="/">Thoughts<span>.</span></TransitionLink><p>Video editing by Salman · 3 years of experience</p><div><TransitionLink href="/reels">Reels</TransitionLink><TransitionLink href="/learn-editing">Learn Editing</TransitionLink><TransitionLink href="/about">About Us</TransitionLink><a href={whatsapp} target="_blank" rel="noreferrer">WhatsApp</a><a href="mailto:ext.salman786@gmail.com">Email</a></div></footer>
-      <a className="mobile-whatsapp" href={whatsapp} target="_blank" rel="noreferrer" aria-label="Start a project with Salman on WhatsApp"><span>●</span> WhatsApp Salman</a>
+      <footer><TransitionLink className="brand" href="/">Thoughts<span>.</span></TransitionLink><p>Video editing by Salman · 3+ Years of Professional Experience</p><div><TransitionLink href="/reels">Reels</TransitionLink><TransitionLink href="/learn-editing">Learn Editing</TransitionLink><TransitionLink href="/about">About Us</TransitionLink><a href={whatsapp} target="_blank" rel="noreferrer">WhatsApp</a><a href="mailto:ext.salman786@gmail.com">Email</a></div></footer>
+      <MobileWhatsAppCTA href={whatsapp} />
     </main>
   );
 }

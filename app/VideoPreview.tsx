@@ -34,6 +34,7 @@ export default function VideoPreview({ id, title, category, orientation = "lands
   const videoRef = useRef<HTMLVideoElement>(null);
   const hideTimer = useRef<number | null>(null);
   const keyboardFocusWithin = useRef(false);
+  const lastPointerActivity = useRef(0);
   const thumbnailWidth = orientation === "portrait" ? 720 : 1200;
   const thumbnailHeight = orientation === "portrait" ? 1280 : 675;
   const thumbnail = `https://drive.google.com/thumbnail?id=${id}&sz=w${thumbnailWidth}`;
@@ -66,6 +67,23 @@ export default function VideoPreview({ id, title, category, orientation = "lands
       window.removeEventListener("thoughts:video-playing", pauseWhenAnotherVideoStarts);
     };
   }, [id]);
+
+  useEffect(() => {
+    const player = playerRef.current;
+    if (!player || !("IntersectionObserver" in window)) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting && videoRef.current && !videoRef.current.paused) {
+          videoRef.current.pause();
+        }
+      },
+      { rootMargin: "80px 0px", threshold: 0.01 },
+    );
+
+    observer.observe(player);
+    return () => observer.disconnect();
+  }, []);
 
   function playVideo(video: HTMLVideoElement) {
     void video.play().catch(() => {
@@ -165,11 +183,19 @@ export default function VideoPreview({ id, title, category, orientation = "lands
     }
   }
 
+  function handlePointerActivity() {
+    if (mode !== "inline" || !isPlaying) return;
+    const now = performance.now();
+    if (now - lastPointerActivity.current < 240) return;
+    lastPointerActivity.current = now;
+    revealControls(true);
+  }
+
   return (
     <div
       ref={playerRef}
       className={`video-player-shell video-player-${orientation} is-${mode}${controlsVisible || !isPlaying ? " controls-visible" : ""}`}
-      onPointerMove={() => mode === "inline" && isPlaying && revealControls(true)}
+      onPointerMove={handlePointerActivity}
       onTouchStart={() => mode === "inline" && isPlaying && revealControls(true)}
     >
       <video
@@ -202,7 +228,9 @@ export default function VideoPreview({ id, title, category, orientation = "lands
         }}
         onLoadedMetadata={(event) => setDuration(Number.isFinite(event.currentTarget.duration) ? event.currentTarget.duration : 0)}
         onDurationChange={(event) => setDuration(Number.isFinite(event.currentTarget.duration) ? event.currentTarget.duration : 0)}
-        onTimeUpdate={(event) => setCurrentTime(event.currentTarget.currentTime)}
+        onTimeUpdate={(event) => {
+          if (controlsVisible) setCurrentTime(event.currentTarget.currentTime);
+        }}
         onRateChange={(event) => setPlaybackRate(event.currentTarget.playbackRate)}
         onVolumeChange={(event) => {
           setMuted(event.currentTarget.muted);

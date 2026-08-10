@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import TransitionLink from "../TransitionLink";
+import MobileWhatsAppCTA from "../MobileWhatsAppCTA";
 
 export const metadata: Metadata = {
   title: "Learn Video Editing — Thoughts Creative Studio",
@@ -74,7 +75,7 @@ const audiences = [
 ];
 
 const credibility = [
-  { value: "3+", title: "Years Experience", text: "Professional video editing experience." },
+  { value: "3+", title: "Years of Professional Experience", text: "Professional video editing experience." },
   { value: "◆", title: "Real Client Work", text: "Learn through practical, real-world editing workflows." },
   { value: "↗", title: "Portfolio Focused", text: "Build skills that can actually be demonstrated to clients." },
   { value: "⌘", title: "Freelancing Focused", text: "Learn not only editing, but also how to turn the skill into client work." },
@@ -299,7 +300,7 @@ export default function LearnEditingPage() {
         <p>Professional video editing and freelance training by Salman</p>
         <div><TransitionLink href="/">Home</TransitionLink><TransitionLink href="/reels">Reels</TransitionLink><TransitionLink href="/about">About Us</TransitionLink><a href={whatsapp} target="_blank" rel="noreferrer">WhatsApp</a></div>
       </footer>
-      <a className="mobile-whatsapp" href={whatsapp} target="_blank" rel="noreferrer" aria-label="Ask about video editing training on WhatsApp"><span>●</span> Ask About Training</a>
+      <MobileWhatsAppCTA href={whatsapp} label="Ask About Training" ariaLabel="Ask about video editing training on WhatsApp" />
     </main>
   );
 }
