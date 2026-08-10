@@ -27,14 +27,14 @@ const reels = [
   },
   {
     title: "Premium Motion Edit",
-    client: "Thoughts Studio",
+    client: "Sayed Yaman",
     category: "Motion Graphics",
     views: "Motion-led campaign",
     id: "16aluH0shttIm7gEvrqPZhECUOM6NRFd2",
   },
   {
     title: "Serbia Work Permit Update",
-    client: "PVG Germany",
+    client: "ICS Global",
     category: "Educational",
     views: "Social-first edit",
     id: "1HL0RERWvffPBGqw9dJlxgGHsEE2ztHmB",
